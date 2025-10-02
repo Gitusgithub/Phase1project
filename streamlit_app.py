@@ -121,6 +121,20 @@ if all(col in filtered_df.columns for col in injury_cols):
     st.pyplot(fig)
 
 # -------------------------------
+# Step 6: Top 10 Locations by Number of Accidents
+# -------------------------------
+if "Location" in filtered_df.columns:
+    top_locations = filtered_df["Location"].value_counts().head(10)
+
+    st.subheader("Top 10 Locations by Number of Accidents")
+    fig, ax = plt.subplots(figsize=(10,5))
+    top_locations.plot(kind="bar", ax=ax)
+    ax.set_title("Top 10 Locations by Number of Accidents")
+    ax.set_ylabel("Number of Accidents")
+    ax.set_xlabel("Location")
+    st.pyplot(fig)
+
+# -------------------------------
 # Wrap up
 # -------------------------------
 st.success("Dashboard loaded successfully with filters applied!")
